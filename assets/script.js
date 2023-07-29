@@ -2,7 +2,7 @@ var apiKey = "e06072637e10d92c8fe85c67087937bf";
 var searchBtn = document.querySelector("#search-btn");
 var currentWeatherContainer = document.querySelector("#current-weather-container");
 var fiveDayWeatherContainer = document.querySelector("#five-day-weather-container");
-var cityList = document.querySelector(".city-list");
+var searchedCitiesContainer = document.getElementById("searched-cities-container");
 var userInputEl = document.querySelector("#user-input");
 
 function renderCurrentWeather(data) {
@@ -18,8 +18,7 @@ function renderCurrentWeather(data) {
 
     // Create HTML to display the weather information
     var weatherHTML = `
-      <h3>${cityName}</h3>
-      <p>Date: ${currentDate}</p>
+      <h3>${cityName} ${currentDate}</h3>
       <p>Temperature: ${temperature}°C</p>
       <p>Description: ${weatherDescription}</p>
       <p>Wind: ${windSpeed} m/s</p>
@@ -28,13 +27,44 @@ function renderCurrentWeather(data) {
 
     // Render the weather information
     currentWeatherContainer.innerHTML = weatherHTML;
+    savedSearches(cityName);
 };
 
-searchBtn.addEventListener('click', function (event) {
+function savedSearches(city) {
+    var searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
+    var cityAlreadySaved = false;
+
+    for (var i = 0; i < searchHistory.length; i++) {
+        if (searchHistory[i] === city) {
+            cityAlreadySaved = true;
+            break;
+        }
+    }
+
+    if (!cityAlreadySaved) {
+        searchHistory.push(city);
+
+        // Optional: Limit the search history to 5 entries
+        if (searchHistory.length > 5) {
+            searchHistory.shift();
+        }
+
+        localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+        updateSavedSearches(searchHistory);
+    }
+}
+
+
+searchBtn.addEventListener('click', (event) => {
     event.preventDefault();
 
-    var userInput = userInputEl.value;
-    var currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${userInput}&appid=${apiKey}`;
+    const userInput = userInputEl.value;
+    getWeatherData(userInput); // Call getWeatherData with the entered city
+});
+
+
+function getWeatherData(city) {
+    var currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
 
     fetch(currentWeatherUrl)
         .then((response) => {
@@ -44,4 +74,4 @@ searchBtn.addEventListener('click', function (event) {
             console.log(data);
             renderCurrentWeather(data);
         });
-});
+};
