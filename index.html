@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,16 +11,28 @@
     <header>
         <h1>Weather Dashboard</h1>
     </header>
-    <div>
-        <h2 class="citysearch">Search for a City:</h2>
-        <form id="searchForm">
-            <input type="text" id="searchInput" placeholder="Search for a city">
-            <input type="submit" value="Search">
+    <section>
+        <h2 id="city-search">Search for a City:</h2>
+        <form class="searchForm">
+            <input type="text" id="user-input" >
+            <label for="user-input">Enter City Name</label>
+            <input id="search-btn" type="submit" value="Search">
         </form>
-    </div>
-    <div id="5day">
-        
-    </div>
-    
+        <ul class="city-list">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div id="current-weather-container">
+            <h2>Current Weather</h2>
+        </div>
+        <div id="five-day-weather-container"> </div>
+    </section>
+    <script src="assets/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.6/dayjs.min.js"></script>
 </body>
+
 </html>
