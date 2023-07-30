@@ -1,0 +1,100 @@
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    color: white;
+    background-color: purple;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 200%
+}
+
+.searchForm {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+#search-btn {
+    margin-top: 15px;
+    width: 315px;
+    height: 50px;
+    background-color: lightskyblue;
+    color: white;
+    border: 1px solid white;
+    border-radius: 25px;
+    cursor: pointer;;
+}
+
+#user-input {
+    width: 300px;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+#current-weather-container {
+    flex: 3;
+    border: 2px solid purple;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#recent-searches {
+    display: fel;
+    font-family: Arial, Helvetica, sans-serif;
+    flex: 1
+}
+
+.recent-search-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  
+  .recent-search-buttns {
+    margin-top: 15px;
+    width: 315px;
+    height: 50px;
+    background-color: purple;
+    color: white;
+    border: 1px solid white;
+    border-radius: 25px;
+    cursor: pointer;
+  }
+
+.card {
+    display: inline-block;
+    width: 200px;
+    padding: 10px;
+    margin: 5px;
+    background-color: purple;
+    color: white;
+    border-radius: 8px;
+  }
+
+.second-container {
+    display: flex;
+    width: 100%;
+    height: 200%
+}
+  
+  #five-day-weather-container {
+    flex: 3;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+  }
+
+#five-day-title {
+    font-family: Arial, Helvetica, sans-serif;
+}
+  

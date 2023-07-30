@@ -1,25 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Application</title>
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body>
     <header>
         <h1>Weather Dashboard</h1>
     </header>
-    <div>
-        <h2 class="citysearch">Search for a City:</h2>
-        <form id="searchForm">
-            <input type="text" id="searchInput" placeholder="Search for a city">
-            <input type="submit" value="Search">
-        </form>
-    </div>
-    <div id="5day">
-        
-    </div>
-    
+    <section>
+        <div class="container">
+            <form class="searchForm">
+              <h2 id="city-search">Search for a City:</h2>
+              <div class="search-bar">
+                <input type="text" id="user-input">
+                <label for="user-input"></label>
+              </div>
+              <input id="search-btn" type="submit" value="Search">
+            </form>
+            <div id="current-weather-container">
+              <h2>Current Weather</h2>
+            </div>
+          </div>
+          <div calss="second-container">
+            <div id="recent-searches">
+                <h2>Recent Searches:</h2>
+                <div id="searched-cities-container">
+                </div>
+            </div>
+            <h2 id="five-day-title">5 Day Forecast</h2>
+            <div id="five-day-weather-container">
+            </div>
+          </div>          
+    </section>
+    <script src="assets/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.6/dayjs.min.js"></script>
 </body>
+
 </html>
