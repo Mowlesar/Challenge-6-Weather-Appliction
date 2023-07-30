@@ -70,7 +70,7 @@ function renderCurrentWeather(data) {
   `;
 
     // Render the weather information
-    currentWeatherContainer.innerHTML = weatherHTML;
+    currentWeatherContainer.innerHTML = `<h1>Current Weather</h1> ${weatherHTML}`;
 }
 
 function renderFiveDayWeather(data) {
@@ -99,7 +99,7 @@ function renderFiveDayWeather(data) {
       var icon = forecast.weather[0].icon;
   
       var forecastHTML = `
-        <div>
+        <div class="card">
           <h3>${formattedDate}</h3>
           <p>Temperature: ${temperature}°C</p>
           <p>Wind Speed: ${windSpeed} m/s</p>
@@ -119,11 +119,13 @@ function updateSavedSearches(searchHistory) {
         var city = searchHistory[i];
         var button = document.createElement('button');
         button.textContent = city;
+        button.classList.add('recent-search-buttns')
 
         // Use a function to handle the click event and pass the city as an argument
         button.addEventListener('click', createClickHandler(city));
 
         searchedCitiesContainer.appendChild(button);
+        searchedCitiesContainer.classList.add('recent-search-list');
     }
 }
 
